@@ -1,10 +1,16 @@
-const readline = require('readline-sync')
+const readline = require('./node_modules/readline-sync/lib/readline-sync')
+const robots = {
+    text: require('./robots/text')
+}
+
 
 function start(){
     const content = {}
-
-    content.seachTerm = askAndReturnSearchTerm()
+    
+    content.searchTerm = askAndReturnSearchTerm()
     content.prefix = askAndReturnPrefix()
+
+    robots.text(content)
 
     function askAndReturnSearchTerm(){
       return readline.question('Type a Wikipedia seach term: ') 
