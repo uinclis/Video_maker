@@ -19,7 +19,7 @@ async function robot(content) {
     function sanitizeContent(content0) {
         const withoutBlankLinesAndMarkdowns = removeBlankLinesAndMarkdowns(content.sourceContentOriginal)
         const withoutDatesInParentheses = removeDatesInParentheses(withoutBlankLinesAndMarkdowns)
-        console.log(withoutDatesInParentheses)
+       
 
         content.sourceContentSanitized = withoutDatesInParentheses
 
@@ -43,8 +43,8 @@ async function robot(content) {
     }
 
     function breakContentIntoSentences(content){
-        const sentences = sentenceBoundaryDetection.sentences(content.sourceContentSanitized)
-        console.log(sentences)
+        const tetinha = sentenceBoundaryDetection.sentences(content.sourceContentSanitized)
+        console.log(tetinha)
     }
 
 }
