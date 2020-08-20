@@ -19,7 +19,7 @@ async function robot(content) {
     function sanitizeContent(content0) {
         const withoutBlankLinesAndMarkdowns = removeBlankLinesAndMarkdowns(content.sourceContentOriginal)
         const withoutDatesInParentheses = removeDatesInParentheses(withoutBlankLinesAndMarkdowns)
-       
+        console.log(withoutDatesInParentheses)
 
         content.sourceContentSanitized = withoutDatesInParentheses
 
@@ -42,9 +42,18 @@ async function robot(content) {
         return text.replace(/\((?:\([^()]*\)|[^()])*\)/gm, '').replace(/  /g, ' ') //I don't know what is {{spnd}} and so I needed to FORCE [.replace(/  /g, ' ')] the replaiciment for a normal SPACE
     }
 
-    function breakContentIntoSentences(content){
-        const tetinha = sentenceBoundaryDetection.sentences(content.sourceContentSanitized)
-        console.log(tetinha)
+    function breakContentIntoSentences(content) {
+        content.sentences = []
+
+
+        const sentences = sentenceBoundaryDetection.sentences(content.sourceContentSanitized)
+        sentences.forEach((sentences) => {
+            content.sentences.push({
+                text: sentences,
+                keywords: [],
+                images: [],
+            })
+        })
     }
 
 }
